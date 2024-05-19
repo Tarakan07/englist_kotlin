@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import com.example.english.databinding.ActivityLearnWorldBinding
 import com.example.english.databinding.ActivityMainBinding
 
@@ -29,15 +30,28 @@ class MainActivity : AppCompatActivity() {
         }
         window.statusBarColor = ContextCompat.getColor(this,R.color.red);
 
-//    val tvQuestionWord:TextView=findViewById(R.id.tvQuestionWord);
-//        tvQuestionWord.setTextColor(ContextCompat.getColor(this,R.color.black))
+    //
 
-//        binding.tvQuestionWord.text="Lalala";
-//        binding.tvQuestionWord.setTextColor(Color.GRAY)
-
-        with(binding){
-            tvQuestionWord.text="Lalala";
-            tvQuestionWord.setTextColor(Color.GRAY)
+        binding.layoutAnswer3.setOnClickListener {
+        markAnswerCorrect()
         }
+    }
+
+    private fun markAnswerCorrect() {
+        binding.layoutAnswer3.background=ContextCompat.getDrawable(this,R.drawable.shape_rounded_containers_correct);
+
+        binding.tvVariantNumber3.setTextColor(ContextCompat.getColor(this,R.color.white));
+        binding.tvVariantNumber3.background=ContextCompat.getDrawable(this,R.drawable.shape_rounded_variant_correct)
+
+        binding.tvVariantValue3.setTextColor(ContextCompat.getColor(this,R.color.current_layout))
+
+        binding.btnSkip.isVisible=false;
+
+        binding.layoutResult.setBackgroundColor(ContextCompat.getColor(this,R.color.current_layout));
+
+        binding.ivResultIcon.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_like))
+        binding.tvResultMessage.text=resources.getString(R.string.title_correct);
+
+       binding.layoutResult.isVisible=true
     }
 }

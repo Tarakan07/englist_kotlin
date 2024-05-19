@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="33dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 style="@style/TextViewVariantStyle"
-                android:text="Сломать2" />
+                android:text="First variant" />
         </LinearLayout>
 
         <LinearLayout
@@ -103,9 +103,44 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 style="@style/TextViewVariantStyle"
-                android:text="Сломать" />
+                android:text="Second variant" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/layoutAnswer3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rounded_containers"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="15dp"
+            android:layout_marginBottom="18dp"
+            >
+
+            <TextView
+                android:id="@+id/tvVariantNumber3"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_rounded_variant"
+                android:gravity="center"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"
+                android:text="3"
+                style="@style/TextViewVariantStyle"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tvVariantValue3"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                style="@style/TextViewVariantStyle"
+                android:text="Third variant" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,8 +158,6 @@
                 android:paddingVertical="10dp"
                 android:text="3"
                 style="@style/TextViewVariantStyle"
-
-
                 />
 
             <TextView
@@ -132,37 +165,42 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 style="@style/TextViewVariantStyle"
-                android:text="Сломать" />
+                android:text="Another" />
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnSkip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/shape_button_footer"
         android:width="310dp"
         android:backgroundTint="#2574FF"
         android:text="@string/button_skip"
         android:fontFamily="@font/nunito_bold"
         android:textAllCaps="true"
-        android:visibility="gone"
+        android:textColor="@color/white"
+        android:visibility="visible"
         />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#0EAD69"
-
+        android:visibility="invisible"
+        android:id="@+id/layoutResult"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_height="136dp"
         android:paddingHorizontal="32dp">
 
         <ImageButton
-            android:id="@+id/imageButton2"
+
+            android:id="@+id/ivResultIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="ic for like"
@@ -173,16 +211,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tvResultMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_correct"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
-            app:layout_constraintStart_toEndOf="@+id/imageButton2"
-            app:layout_constraintTop_toTopOf="@+id/imageButton2"
+            app:layout_constraintBottom_toBottomOf="@+id/ivResultIcon"
+            app:layout_constraintStart_toEndOf="@+id/ivResultIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivResultIcon"
             android:layout_marginLeft="8dp"
             android:textColor="#FFFFFF"/>
 
         <android.widget.Button
+            android:id="@+id/btnContinue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -196,6 +236,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+            app:layout_constraintTop_toBottomOf="@+id/ivResultIcon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
