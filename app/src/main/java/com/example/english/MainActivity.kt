@@ -31,10 +31,57 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = ContextCompat.getColor(this,R.color.red);
 
     //
-
+        binding.layoutAnswer1.setOnClickListener {
+            markAnswerWrong();
+        }
         binding.layoutAnswer3.setOnClickListener {
         markAnswerCorrect()
         }
+        binding.btnContinue.setOnClickListener {
+            markAnswerNeutral()
+        }
+    }
+
+    private fun markAnswerNeutral() {
+        with(binding){
+            for(layout in listOf(layoutAnswer1,layoutAnswer3)){
+                layout.background=ContextCompat.getDrawable(this@MainActivity,R.drawable.shape_rounded_containers)
+
+            }
+            for(textView in listOf(tvVariantValue1,tvVariantValue3)){
+                textView.setTextColor(ContextCompat.getColor(this@MainActivity,R.color.textVariantColor))
+            }
+            for (textViewNumber in listOf(tvVariantNumber1,tvVariantNumber3)){
+//                textViewNumber.setTextColor(ContextCompat.getColor(this@MainActivity,R.color.textVariantColor))
+//                textViewNumber.background=ContextCompat.getDrawable(this@MainActivity,R.drawable.shape_rounded_variant)
+
+                textViewNumber.apply {
+                    setTextColor(ContextCompat.getColor(this@MainActivity,R.color.textVariantColor))
+                   background=ContextCompat.getDrawable(this@MainActivity,R.drawable.shape_rounded_variant)
+                }
+            }
+
+            layoutResult.isVisible=false;
+            btnSkip.isVisible=true
+        }
+    }
+
+    private fun markAnswerWrong() {
+        binding.layoutAnswer1.background=ContextCompat.getDrawable(this,R.drawable.shape_rounded_containers_wrong);
+
+        binding.tvVariantNumber1.setTextColor(ContextCompat.getColor(this,R.color.white));
+        binding.tvVariantNumber1.background=ContextCompat.getDrawable(this,R.drawable.shape_rounded_variant_wrong)
+
+        binding.tvVariantValue1.setTextColor(ContextCompat.getColor(this,R.color.wrong_layout))
+
+        binding.btnSkip.isVisible=false;
+
+        binding.layoutResult.setBackgroundColor(ContextCompat.getColor(this,R.color.wrong_layout));
+
+        binding.ivResultIcon.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_wrong))
+        binding.tvResultMessage.text= resources.getString(R.string.title_wrong);
+        binding.btnContinue.setTextColor(ContextCompat.getColor(this,R.color.wrong_layout))
+        binding.layoutResult.isVisible=true
     }
 
     private fun markAnswerCorrect() {
@@ -48,9 +95,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnSkip.isVisible=false;
 
         binding.layoutResult.setBackgroundColor(ContextCompat.getColor(this,R.color.current_layout));
-
+        binding.btnContinue.setTextColor(ContextCompat.getColor(this,R.color.current_layout))
         binding.ivResultIcon.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_like))
-        binding.tvResultMessage.text=resources.getString(R.string.title_correct);
+        binding.tvResultMessage.text= resources.getString(R.string.title_correct);
 
        binding.layoutResult.isVisible=true
     }

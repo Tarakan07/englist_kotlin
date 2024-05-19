@@ -5,4 +5,5 @@
     <color name="textVariantColor">#888992</color>
     <color name="red">#FF0000</color>
     <color name="current_layout">#8AF322</color>
+    <color name="wrong_layout">#D00404</color>
 </resources>
